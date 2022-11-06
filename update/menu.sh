@@ -215,7 +215,7 @@ uptimecek=`uptime -p | awk '{print $6,$7}' | cut -d , -f1`
 cekup=`uptime -p | grep -ow "day"`
 IPVPS=$(curl -s ipinfo.io/ip )
 serverV=$( curl -sS https://raw.githubusercontent.com/artanodrop/permission/main/version)
-if [ "$Isadmin" = "ON" ]; then
+if [ "$Isadmin" = "Pro" ]; then
 uis="${GREEN}Premium User$NC"
 else
 uis="${RED}Free Version$NC"
@@ -272,8 +272,8 @@ mai="datediff "$Exp" "$DATE""
 
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐$NC"
 echo -e "$COLOR1│$NC Version     :${COLOR1} $(cat /opt/.ver) Latest Version${NC}"
-echo -e "$COLOR1│$NC Client Name : $Nama$NC"
-echo -e "$COLOR1│$NC Exp License : $sisa_hari$NC Days Tersisa $NC"
+echo -e "$COLOR1│$NC Client Name : ${GREEN}$Nama$NC"
+echo -e "$COLOR1│$NC Exp License : ${GREEN}$sisa_hari$NC Days Tersisa $NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘$NC"
 echo -e "$COLOR1┌────────────────────── BY ───────────────────────┐${NC}"
 echo -e "$COLOR1│${NC}             • ARTA MAULANA PREMI •              $COLOR1│$NC"
