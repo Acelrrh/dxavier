@@ -253,7 +253,7 @@ echo -e "$COLOR1┌────────────────────�
 echo -e "$COLOR1│$NC [ SSH WS : ${status_ws} ]  [ XRAY : ${status_xray} ]   [ NGINX : ${status_nginx} ] $COLOR1│$NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
-echo -e "$COLOR1│$NC [ HARI : $ttoday ]  [ KEMARIN : $tyest ]   [ BULAN : $tmon ] $COLOR1│$NC"
+echo -e "$COLOR1│$NC [ HARI INI : ${GREEN}$ttoday$NC ]  [ KEMARIN : ${GREEN}$tyest$NC ]  [ BULAN : ${GREEN}$tmon$NC ] $NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
 echo -e "  ${COLOR1}[01]${NC} • SSHWS   [${YELLOW}Menu${NC}]   ${COLOR1}[07]${NC} • THEME    [${YELLOW}Menu${NC}]  $COLOR1│$NC"   
