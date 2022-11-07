@@ -254,7 +254,7 @@ echo -e "$COLOR1│$NC [ SSH WS : ${status_ws} ]  [ XRAY : ${status_xray} ]   [ 
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
 echo -e "$COLOR1│$NC [ HARI INI ]   [ KEMARIN  ]  [ BULAN  ] $NC"
-echo -e "$COLOR1│$NC  ${GREEN}$ttoday$NC     ${GREEN}$tyest$NC     ${GREEN}$tmon$NC
+echo -e "$COLOR1│$NC  ${GREEN}$ttoday$NC     ${GREEN}$tyest$NC     ${GREEN}$tmon$NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
 echo -e "  ${COLOR1}[01]${NC} • SSHWS   [${YELLOW}Menu${NC}]   ${COLOR1}[07]${NC} • THEME    [${YELLOW}Menu${NC}]  $COLOR1│$NC"   
