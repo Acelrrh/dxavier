@@ -2,22 +2,16 @@
 dateFromServer=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
 biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
 ###########- COLOR CODE -##############
-colornow=$(cat /etc/ssnvpn/theme/color.conf)
+colornow=$(cat /etc/yokkovpn/theme/color.conf)
 NC="\e[0m"
 RED="\033[0;31m" 
-COLOR1="$(cat /etc/ssnvpn/theme/$colornow | grep -w "TEXT" | cut -d: -f2|sed 's/ //g')"
-COLBG1="$(cat /etc/ssnvpn/theme/$colornow | grep -w "BG" | cut -d: -f2|sed 's/ //g')"                    
+COLOR1="$(cat /etc/yokkovpn/theme/$colornow | grep -w "TEXT" | cut -d: -f2|sed 's/ //g')"
+COLBG1="$(cat /etc/yokkovpn/theme/$colornow | grep -w "BG" | cut -d: -f2|sed 's/ //g')"                    
 ###########- END COLOR CODE -##########
 
 
-red='\e[1;31m'
-green='\e[1;32m'
-NC='\e[0m'
-
 function addssh(){
 clear
-dnsdomain=$(cat /root/nsdomain)
-dnskey=$(cat /etc/slowdns/server.pub)
 domen=`cat /etc/xray/domain`
 portsshws=`cat ~/log-install.txt | grep -w "SSH Websocket" | cut -d: -f2 | awk '{print $1}'`
 wsssl=`cat /root/log-install.txt | grep -w "SSH SSL Websocket" | cut -d: -f2 | awk '{print $1}'`
@@ -90,8 +84,7 @@ ssl="$(cat ~/log-install.txt | grep -w "Stunnel4" | cut -d: -f2)"
 sqd="$(cat ~/log-install.txt | grep -w "Squid" | cut -d: -f2)"
 ovpn="$(netstat -nlpt | grep -i openvpn | grep -i 0.0.0.0 | awk '{print $4}' | cut -d: -f2)"
 ovpn2="$(netstat -nlpu | grep -i openvpn | grep -i 0.0.0.0 | awk '{print $4}' | cut -d: -f2)"
-dnsdomain=$(cat /root/nsdomain)
-dnskey=$(cat /etc/slowdns/server.pub)
+
 OhpSSH=`cat /root/log-install.txt | grep -w "OHP SSH" | cut -d: -f2 | awk '{print $1}'`
 OhpDB=`cat /root/log-install.txt | grep -w "OHP DBear" | cut -d: -f2 | awk '{print $1}'`
 OhpOVPN=`cat /root/log-install.txt | grep -w "OHP OpenVPN" | cut -d: -f2 | awk '{print $1}'`
@@ -111,20 +104,19 @@ echo -e "$COLOR1┌────────────────────�
 echo -e "$COLOR1│$NC  Username   : $Login" 
 echo -e "$COLOR1│$NC  Password   : $Pass"
 echo -e "$COLOR1│$NC  Expired On : $exp" 
-echo -e "$COLOR1──────────────────────────────────────────────────${NC}"
-echo -e "$COLOR1 $NC  IP         : $IP" 
-echo -e "$COLOR1 $NC  Host       : $domen" 
-echo -e "$COLOR1 $NC  OpenSSH    : $opensh"
-echo -e "$COLOR1 $NC  Dropbear   : $db" 
-echo -e "$COLOR1 $NC  SSH-WS     : $portsshws, 8880" 
-echo -e "$COLOR1 $NC  SSH-SSL-WS : $wsssl" 
-echo -e "$COLOR1 $NC  SSL/TLS    :$ssl" 
-echo -e "$COLOR1 $NC  UDPGW      : 7100-7300" 
-echo -e "$COLOR1 $NC  NS Slowdns : $dnsdomain"
-echo -e "$COLOR1 $NC  DNS PubKey : $dnskey" 
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
-echo -e "  GET wss://bug.com/ HTTP/1.1[crlf]Host: [host] [crlf]Upgrade: websocket[crlf][crlf]"
+echo -e "$COLOR1│$NC  IP         : $IP" 
+echo -e "$COLOR1│$NC  Host       : $domen" 
+echo -e "$COLOR1│$NC  OpenSSH    : $opensh"
+echo -e "$COLOR1│$NC  Dropbear   : $db" 
+echo -e "$COLOR1│$NC  SSH-WS     : $portsshws" 
+echo -e "$COLOR1│$NC  SSH-SSL-WS : $wsssl" 
+echo -e "$COLOR1│$NC  SSL/TLS    :$ssl" 
+echo -e "$COLOR1│$NC  UDPGW      : 7100-7300" 
+echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
+echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
+echo -e "  GET wss://who.int/ HTTP/1.1[crlf]Host: $domen [crlf]Upgrade: websocket[crlf][crlf]"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 echo -e "$COLOR1┌────────────────────── BY ───────────────────────┐${NC}"
 echo -e "$COLOR1│${NC}             • ARTA MAULANA PREMI •              $COLOR1│$NC"
@@ -134,23 +126,22 @@ echo -e "$COLOR1┌────────────────────�
 echo -e "$COLOR1│${NC} ${COLBG1}               • SSH PANEL MENU •              ${NC} $COLOR1│$NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
-echo -e "$COLOR1 $NC  Username   : $Login" 
-echo -e "$COLOR1 $NC  Password   : $Pass"
-echo -e "$COLOR1 $NC  Expired On : $exp" 
-echo -e "$COLOR1──────────────────────────────────────────────────${NC}"
-echo -e "$COLOR1 $NC  IP         : $IP" 
-echo -e "$COLOR1 $NC  Host       : $domen" 
-echo -e "$COLOR1 $NC  OpenSSH    : $opensh"
-echo -e "$COLOR1 $NC  Dropbear   : $db" 
-echo -e "$COLOR1 $NC  SSH-WS     : $portsshws, 8880" 
-echo -e "$COLOR1 $NC  SSH-SSL-WS : $wsssl" 
-echo -e "$COLOR1 $NC  SSL/TLS    :$ssl" 
-echo -e "$COLOR1 $NC  UDPGW      : 7100-7300" 
-echo -e "$COLOR1 $NC  NS Slowdns : $dnsdomain"
-echo -e "$COLOR1 $NC  DNS PubKey : $dnskey" 
+echo -e "$COLOR1│$NC  Username   : $Login" 
+echo -e "$COLOR1│$NC  Password   : $Pass"
+echo -e "$COLOR1│$NC  Expired On : $exp" 
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
-echo -e "  GET wss://bug.com/ HTTP/1.1[crlf]Host: [host] [crlf]Upgrade: websocket[crlf][crlf]"
+echo -e "$COLOR1│$NC  IP         : $IP" 
+echo -e "$COLOR1│$NC  Host       : $domen" 
+echo -e "$COLOR1│$NC  OpenSSH    : $opensh"
+echo -e "$COLOR1│$NC  Dropbear   : $db" 
+echo -e "$COLOR1│$NC  SSH-WS     : $portsshws" 
+echo -e "$COLOR1│$NC  SSH-SSL-WS : $wsssl" 
+echo -e "$COLOR1│$NC  SSL/TLS    :$ssl" 
+echo -e "$COLOR1│$NC  UDPGW      : 7100-7300" 
+echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
+echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
+echo -e "  GET wss://who.int/ HTTP/1.1[crlf]Host: $domen [crlf]Upgrade: websocket[crlf][crlf]"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 echo -e "$COLOR1┌────────────────────── BY ───────────────────────┐${NC}"
 echo -e "$COLOR1│${NC}             • ARTA MAULANA PREMI •              $COLOR1│$NC"
@@ -167,7 +158,7 @@ portsshws=`cat ~/log-install.txt | grep -w "SSH Websocket" | cut -d: -f2 | awk '
 if [ -f "/etc/systemd/system/sshws.service" ]; then
 clear
 else
-wget -q -O /usr/bin/proxy3.js "https://raw.githubusercontent.com/artanodrop/dxavier/main/ssh/proxy3.js"
+wget -q -O /usr/bin/proxy3.js "https://raw.githubusercontent.com/artanodrop/multiws/main/ssh/proxy3.js"
 cat <<EOF > /etc/systemd/system/sshws.service
 [Unit]
 Description=WSenabler
@@ -192,7 +183,7 @@ echo -e "$COLOR1┌────────────────────�
 echo -e "$COLOR1│${NC} ${COLBG1}               • WEBSOCKET MENU •              ${NC} $COLOR1│$NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}" 
-wget -q -O /usr/bin/ssh-wsenabler "https://raw.githubusercontent.com/artanodrop/dxavier/main/ssh/sshws-true.sh" && chmod +x /usr/bin/ssh-wsenabler
+wget -q -O /usr/bin/ssh-wsenabler "https://raw.githubusercontent.com/artanodrop/multiws/main/ssh/sshws-true.sh" && chmod +x /usr/bin/ssh-wsenabler
 systemctl daemon-reload >/dev/null 2>&1
 systemctl enable sshws.service >/dev/null 2>&1
 systemctl start sshws.service >/dev/null 2>&1
@@ -485,8 +476,6 @@ opensh=`cat /root/log-install.txt | grep -w "OpenSSH" | cut -f2 -d: | awk '{prin
 db=`cat /root/log-install.txt | grep -w "Dropbear" | cut -f2 -d: | awk '{print $1,$2}'`
 ssl="$(cat ~/log-install.txt | grep -w "Stunnel4" | cut -d: -f2)"
 OhpSSH=`cat /root/log-install.txt | grep -w "OHP SSH" | cut -d: -f2 | awk '{print $1}'`
-dnsdomain=$(cat /root/nsdomain)
-dnskey=$(cat /etc/slowdns/server.pub)
 
 
 Login=artavpn`</dev/urandom tr -dc X-Z0-9 | head -c4`
@@ -508,23 +497,22 @@ echo -e "$COLOR1┌────────────────────�
 echo -e "$COLOR1│${NC} ${COLBG1}            • SSH TRIAL ACCOUNT •              ${NC} $COLOR1│$NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
-echo -e "$COLOR1 $NC  Username   : $Login" 
-echo -e "$COLOR1 $NC  Password   : $Pass"
-echo -e "$COLOR1 $NC  Expired On : $exp" 
-echo -e "$COLOR1──────────────────────────────────────────────────${NC}"
-echo -e "$COLOR1 $NC  IP         : $IP" 
-echo -e "$COLOR1 $NC  Host       : $domen" 
-echo -e "$COLOR1 $NC  OpenSSH    : $opensh"
-echo -e "$COLOR1 $NC  Dropbear   : $db" 
-echo -e "$COLOR1 $NC  SSH-WS     : $portsshws, 8880" 
-echo -e "$COLOR1 $NC  SSH-SSL-WS : $wsssl" 
-echo -e "$COLOR1 $NC  SSL/TLS    :$ssl" 
-echo -e "$COLOR1 $NC  UDPGW      : 7100-7300" 
-echo -e "$COLOR1 $NC  NS Slowdns : $dnsdomain"
-echo -e "$COLOR1 $NC  DNS PubKey : $dnskey" 
+echo -e "$COLOR1│$NC  Username   : $Login" 
+echo -e "$COLOR1│$NC  Password   : $Pass"
+echo -e "$COLOR1│$NC  Expired On : $exp" 
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
-echo -e "  GET wss://bug.com/ HTTP/1.1[crlf]Host: [host] [crlf]Upgrade: websocket[crlf][crlf]"
+echo -e "$COLOR1│$NC  IP         : $IP" 
+echo -e "$COLOR1│$NC  Host       : $domen" 
+echo -e "$COLOR1│$NC  OpenSSH    : $opensh"
+echo -e "$COLOR1│$NC  Dropbear   : $db" 
+echo -e "$COLOR1│$NC  SSH-WS     : $portsshws" 
+echo -e "$COLOR1│$NC  SSH-SSL-WS : $wsssl" 
+echo -e "$COLOR1│$NC  SSL/TLS    :$ssl" 
+echo -e "$COLOR1│$NC  UDPGW      : 7100-7300" 
+echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
+echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
+echo -e "  GET wss://who.int/ HTTP/1.1[crlf]Host: $domen [crlf]Upgrade: websocket[crlf][crlf]"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 echo -e "$COLOR1┌────────────────────── BY ───────────────────────┐${NC}"
 echo -e "$COLOR1│${NC}             • ARTA MAULANA PREMI •              $COLOR1│$NC"
@@ -536,23 +524,22 @@ echo -e "$COLOR1┌────────────────────�
 echo -e "$COLOR1│${NC} ${COLBG1}            • SSH TRIAL ACCOUNT •              ${NC} $COLOR1│$NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
-echo -e "$COLOR1 $NC  Username   : $Login" 
-echo -e "$COLOR1 $NC  Password   : $Pass"
-echo -e "$COLOR1 $NC  Expired On : $exp" 
-echo -e "$COLOR1──────────────────────────────────────────────────${NC}"
-echo -e "$COLOR1 $NC  IP         : $IP" 
-echo -e "$COLOR1 $NC  Host       : $domen" 
-echo -e "$COLOR1 $NC  OpenSSH    : $opensh"
-echo -e "$COLOR1 $NC  Dropbear   : $db" 
-echo -e "$COLOR1 $NC  SSH-WS     : $portsshws, 8880" 
-echo -e "$COLOR1 $NC  SSH-SSL-WS : $wsssl" 
-echo -e "$COLOR1 $NC  SSL/TLS    :$ssl" 
-echo -e "$COLOR1 $NC  UDPGW      : 7100-7300" 
-echo -e "$COLOR1 $NC  NS Slowdns : $dnsdomain"
-echo -e "$COLOR1 $NC  DNS PubKey : $dnskey" 
+echo -e "$COLOR1│$NC  Username   : $Login" 
+echo -e "$COLOR1│$NC  Password   : $Pass"
+echo -e "$COLOR1│$NC  Expired On : $exp" 
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
-echo -e "$COLOR1 ${NC}  GET wss://bug.com/ HTTP/1.1[crlf]Host: [host] [crlf]Upgrade: websocket[crlf][crlf]"
+echo -e "$COLOR1│$NC  IP         : $IP" 
+echo -e "$COLOR1│$NC  Host       : $domen" 
+echo -e "$COLOR1│$NC  OpenSSH    : $opensh"
+echo -e "$COLOR1│$NC  Dropbear   : $db" 
+echo -e "$COLOR1│$NC  SSH-WS     : $portsshws" 
+echo -e "$COLOR1│$NC  SSH-SSL-WS : $wsssl" 
+echo -e "$COLOR1│$NC  SSL/TLS    :$ssl" 
+echo -e "$COLOR1│$NC  UDPGW      : 7100-7300" 
+echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
+echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
+echo -e "$COLOR1│${NC}  GET wss://who.int/ HTTP/1.1[crlf]Host: $domen [crlf]Upgrade: websocket[crlf][crlf]"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 echo -e "$COLOR1┌────────────────────── BY ───────────────────────┐${NC}"
 echo -e "$COLOR1│${NC}             • ARTA MAULANA PREMI •              $COLOR1│$NC"
