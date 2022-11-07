@@ -8,11 +8,11 @@ RED="\033[0;31m"
 COLOR1="$(cat /etc/ssnvpn/theme/$colornow | grep -w "TEXT" | cut -d: -f2|sed 's/ //g')"
 COLBG1="$(cat /etc/ssnvpn/theme/$colornow | grep -w "BG" | cut -d: -f2|sed 's/ //g')"                    
 ###########- END COLOR CODE -##########
+
+
 red='\e[1;31m'
 green='\e[1;32m'
 NC='\e[0m'
-green() { echo -e "\\033[32;1m${*}\\033[0m"; }
-red() { echo -e "\\033[31;1m${*}\\033[0m"; }
 
 function addssh(){
 clear
@@ -37,6 +37,7 @@ fi
 
 if grep -qw "$Login" /etc/xray/ssh.txt; then
 echo -e "$COLOR1│${NC}  [Error] Username \e[31m$Login\e[0m already exist"
+echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 echo -e "$COLOR1┌────────────────────── BY ───────────────────────┐${NC}"
 echo -e "$COLOR1│${NC}             • ARTA MAULANA PREMI •              $COLOR1│$NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
@@ -49,6 +50,7 @@ fi
 
 if [ -z $Login ]; then
 echo -e "$COLOR1│${NC} [Error] Username cannot be empty "
+echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 echo -e "$COLOR1┌────────────────────── BY ───────────────────────┐${NC}"
 echo -e "$COLOR1│${NC}             • ARTA MAULANA PREMI •              $COLOR1│$NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
@@ -60,6 +62,7 @@ fi
 read -p "   Password : " Pass
 if [ -z $Pass ]; then
 echo -e "$COLOR1│${NC}  [Error] Password cannot be empty "
+echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 echo -e "$COLOR1┌────────────────────── BY ───────────────────────┐${NC}"
 echo -e "$COLOR1│${NC}             • ARTA MAULANA PREMI •              $COLOR1│$NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
@@ -70,6 +73,7 @@ fi
 read -p "   Expired (hari): " masaaktif
 if [ -z $masaaktif ]; then
 echo -e "$COLOR1│${NC}  [Error] EXP Date cannot be empty "
+echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 echo -e "$COLOR1┌────────────────────── BY ───────────────────────┐${NC}"
 echo -e "$COLOR1│${NC}             • ARTA MAULANA PREMI •              $COLOR1│$NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
@@ -121,6 +125,7 @@ echo -e "$COLOR1 $NC  DNS PubKey : $dnskey"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
 echo -e "  GET wss://bug.com/ HTTP/1.1[crlf]Host: [host] [crlf]Upgrade: websocket[crlf][crlf]"
+echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 echo -e "$COLOR1┌────────────────────── BY ───────────────────────┐${NC}"
 echo -e "$COLOR1│${NC}             • ARTA MAULANA PREMI •              $COLOR1│$NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
@@ -146,6 +151,7 @@ echo -e "$COLOR1 $NC  DNS PubKey : $dnskey"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
 echo -e "  GET wss://bug.com/ HTTP/1.1[crlf]Host: [host] [crlf]Upgrade: websocket[crlf][crlf]"
+echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 echo -e "$COLOR1┌────────────────────── BY ───────────────────────┐${NC}"
 echo -e "$COLOR1│${NC}             • ARTA MAULANA PREMI •              $COLOR1│$NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
@@ -161,7 +167,7 @@ portsshws=`cat ~/log-install.txt | grep -w "SSH Websocket" | cut -d: -f2 | awk '
 if [ -f "/etc/systemd/system/sshws.service" ]; then
 clear
 else
-wget -q -O /usr/bin/proxy3.js "https://raw.githubusercontent.com/godtrex99/multi-ws/main/ssh/proxy3.js"
+wget -q -O /usr/bin/proxy3.js "https://raw.githubusercontent.com/artanodrop/dxavier/main/ssh/proxy3.js"
 cat <<EOF > /etc/systemd/system/sshws.service
 [Unit]
 Description=WSenabler
@@ -186,7 +192,7 @@ echo -e "$COLOR1┌────────────────────�
 echo -e "$COLOR1│${NC} ${COLBG1}               • WEBSOCKET MENU •              ${NC} $COLOR1│$NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}" 
-wget -q -O /usr/bin/ssh-wsenabler "https://raw.githubusercontent.com/godtrex99/multi-ws/main/ssh/sshws-true.sh" && chmod +x /usr/bin/ssh-wsenabler
+wget -q -O /usr/bin/ssh-wsenabler "https://raw.githubusercontent.com/artanodrop/dxavier/main/ssh/sshws-true.sh" && chmod +x /usr/bin/ssh-wsenabler
 systemctl daemon-reload >/dev/null 2>&1
 systemctl enable sshws.service >/dev/null 2>&1
 systemctl start sshws.service >/dev/null 2>&1
@@ -194,6 +200,7 @@ sed -i "/SSH Websocket/c\   - SSH Websocket           : $portsshws [ON]" /root/l
 echo -e "$COLOR1│${NC}  [INFO] • ${green}SSH Websocket Started${NC}"
 echo -e "$COLOR1│${NC}  [INFO] • Restart is require for Changes"
 echo -e "$COLOR1│${NC}           to take effect"
+echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 echo -e "$COLOR1┌────────────────────── BY ───────────────────────┐${NC}"
 echo -e "$COLOR1│${NC}             • ARTA MAULANA PREMI •              $COLOR1│$NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
@@ -214,6 +221,7 @@ sed -i "/SSH Websocket/c\   - SSH Websocket           : $portsshws [OFF]" /root/
 echo -e "$COLOR1│${NC}  [INFO] • ${red}SSH Websocket Stopped${NC}"
 echo -e "$COLOR1│${NC}  [INFO] • Restart is require for Changes"
 echo -e "$COLOR1│${NC}           to take effect"
+echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 echo -e "$COLOR1┌────────────────────── BY ───────────────────────┐${NC}"
 echo -e "$COLOR1│${NC}             • ARTA MAULANA PREMI •              $COLOR1│$NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
@@ -237,6 +245,7 @@ echo -e "$COLOR1│$NC"
 echo -e "$COLOR1│$NC   ${COLOR1}[01]${NC} • Enable SSH WS   ${COLOR1}[02]${NC} • Disable SSH WS"
 echo -e "$COLOR1│$NC"  
 echo -e "$COLOR1│$NC   ${COLOR1}[00]${NC} • GO BACK"
+echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 echo -e "$COLOR1┌────────────────────── BY ───────────────────────┐${NC}"
 echo -e "$COLOR1│${NC}             • ARTA MAULANA PREMI •              $COLOR1│$NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
@@ -314,6 +323,7 @@ rm -f /tmp/login-db-pid.txt
 rm -f /tmp/login-db.txt
 rm -f /tmp/vpn-login-tcp.txt
 rm -f /tmp/vpn-login-udp.txt
+echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 echo -e "$COLOR1┌────────────────────── BY ───────────────────────┐${NC}"
 echo -e "$COLOR1│${NC}             • ARTA MAULANA PREMI •              $COLOR1│$NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
@@ -341,6 +351,7 @@ else
 echo -e "   [INFO] Failure: User $Pengguna Not Exist."
 fi
 fi
+echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 echo -e "$COLOR1┌────────────────────── BY ───────────────────────┐${NC}"
 echo -e "$COLOR1│${NC}             • ARTA MAULANA PREMI •              $COLOR1│$NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
@@ -361,6 +372,7 @@ if getent passwd $User > /dev/null 2>&1; then
 ok="ok"
 else
 echo -e "$COLOR1│${NC}   [INFO] Failure: User $User Not Exist."
+echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 echo -e "$COLOR1┌────────────────────── BY ───────────────────────┐${NC}"
 echo -e "$COLOR1│${NC}             • ARTA MAULANA PREMI •              $COLOR1│$NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
@@ -371,6 +383,7 @@ fi
 
 if [ -z $User ]; then
 echo -e "$COLOR1│${NC}   [Error] Username cannot be empty "
+echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 echo -e "$COLOR1┌────────────────────── BY ───────────────────────┐${NC}"
 echo -e "$COLOR1│${NC}             • ARTA MAULANA PREMI •              $COLOR1│$NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
@@ -402,6 +415,7 @@ echo -e "$COLOR1┌────────────────────�
 echo -e "   Username   : $User"
 echo -e "   Days Added : $Days Days"
 echo -e "   Expires on : $Expiration_Display"
+echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 echo -e "$COLOR1┌────────────────────── BY ───────────────────────┐${NC}"
 echo -e "$COLOR1│${NC}             • ARTA MAULANA PREMI •              $COLOR1│$NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
@@ -412,6 +426,7 @@ echo -e "$COLOR1│${NC} ${COLBG1}             • RENEW SSH ACCOUNT •        
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
 echo -e "   Username Doesnt Exist      "
+echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 echo -e "$COLOR1┌────────────────────── BY ───────────────────────┐${NC}"
 echo -e "$COLOR1│${NC}             • ARTA MAULANA PREMI •              $COLOR1│$NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
@@ -449,6 +464,7 @@ JUMLAH="$(awk -F: '$3 >= 1000 && $1 != "nobody" {print $1}' /etc/passwd | wc -l)
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"  
 echo "   Total: $JUMLAH User"
+echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 echo -e "$COLOR1┌────────────────────── BY ───────────────────────┐${NC}"
 echo -e "$COLOR1│${NC}             • ARTA MAULANA PREMI •              $COLOR1│$NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
@@ -509,6 +525,7 @@ echo -e "$COLOR1 $NC  DNS PubKey : $dnskey"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
 echo -e "  GET wss://bug.com/ HTTP/1.1[crlf]Host: [host] [crlf]Upgrade: websocket[crlf][crlf]"
+echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 echo -e "$COLOR1┌────────────────────── BY ───────────────────────┐${NC}"
 echo -e "$COLOR1│${NC}             • ARTA MAULANA PREMI •              $COLOR1│$NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
@@ -536,6 +553,7 @@ echo -e "$COLOR1 $NC  DNS PubKey : $dnskey"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
 echo -e "$COLOR1 ${NC}  GET wss://bug.com/ HTTP/1.1[crlf]Host: [host] [crlf]Upgrade: websocket[crlf][crlf]"
+echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 echo -e "$COLOR1┌────────────────────── BY ───────────────────────┐${NC}"
 echo -e "$COLOR1│${NC}             • ARTA MAULANA PREMI •              $COLOR1│$NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
