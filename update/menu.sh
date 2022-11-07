@@ -253,7 +253,8 @@ echo -e "$COLOR1┌────────────────────�
 echo -e "$COLOR1│$NC [ SSH WS : ${status_ws} ]  [ XRAY : ${status_xray} ]   [ NGINX : ${status_nginx} ] $COLOR1│$NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
-echo -e "$COLOR1│$NC [ HARI INI : ${GREEN}$ttoday$NC ]  [ KEMARIN : ${GREEN}$tyest$NC ]  [ BULAN : ${GREEN}$tmon$NC ] $NC"
+echo -e "$COLOR1│$NC [ HARI INI ]   [ KEMARIN  ]  [ BULAN  ] $NC"
+echo -e "$COLOR1│$NC  ${GREEN}$ttoday$NC     ${GREEN}$tyest$NC     ${GREEN}$tmon$NC
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
 echo -e "  ${COLOR1}[01]${NC} • SSHWS   [${YELLOW}Menu${NC}]   ${COLOR1}[07]${NC} • THEME    [${YELLOW}Menu${NC}]  $COLOR1│$NC"   
@@ -297,7 +298,7 @@ echo -e "$COLOR1│$NC Client Name : ${GREEN}$Nama$NC"
 echo -e "$COLOR1│$NC Exp License : ${GREEN}$sisa_hari$NC Days Tersisa $NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘$NC"
 echo -e "$COLOR1┌────────────────────── BY ───────────────────────┐${NC}"
-echo -e "$COLOR1│${NC}            ${RED} • ARTA MAULANA PREMI •$NC              $COLOR1│$NC"
+echo -e "$COLOR1│${NC}           ${GREEN}  • ARTA MAULANA PREMI •    $NC          $COLOR1│$NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 echo -e ""
 echo -ne " Select menu : "; read opt
