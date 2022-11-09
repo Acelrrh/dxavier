@@ -268,9 +268,11 @@ cd /usr/bin
 wget -q -O speedtest "https://raw.githubusercontent.com/artanodrop/dxavier/main/ssh/speedtest_cli.py"
 wget -q -O xp "https://raw.githubusercontent.com/artanodrop/dxavier/main/ssh/xp.sh"
 wget -q -O auto-set "https://raw.githubusercontent.com/artanodrop/dxavier/main/xray/auto-set.sh"
+wget -q -O jam "https://raw.githubusercontent.com/artanodrop/dxavier/main/jam.sh"
 chmod +x speedtest
 chmod +x xp
 chmod +x auto-set
+chmod +x jam
 cd
 
 cat > /etc/cron.d/re_otm <<-END
