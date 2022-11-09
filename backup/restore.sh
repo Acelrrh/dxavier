@@ -71,9 +71,9 @@ sleep 1
 cp /root/backup/ss.conf /etc/shadowsocks-libev/ss.conf &> /dev/null
 echo -e "$COLOR1│${NC}  [ ${green}INFO${NC} ] • Restoring admin data..."
 sleep 1
-cp -r /root/backup/yokkovpn-pro /var/lib/ &> /dev/null
+cp -r /root/backup/artanodrop-pro /var/lib/ &> /dev/null
 cp -r /root/backup/.acme.sh /root/ &> /dev/null
-cp -r /root/backup/yokkovpn /etc/ &> /dev/null
+cp -r /root/backup/artavpn /etc/ &> /dev/null
 cp -r /root/backup/xray /etc/ &> /dev/null
 cp -r /root/backup/public_html /home/vps/ &> /dev/null
 cp -r /root/backup/crontab /etc/ &> /dev/null
