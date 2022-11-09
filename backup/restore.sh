@@ -8,12 +8,18 @@ RED="\033[0;31m"
 COLOR1="$(cat /etc/yokkovpn/theme/$colornow | grep -w "TEXT" | cut -d: -f2|sed 's/ //g')"
 COLBG1="$(cat /etc/yokkovpn/theme/$colornow | grep -w "BG" | cut -d: -f2|sed 's/ //g')"                    
 ###########- END COLOR CODE -##########
+# // Exporting URL Host
+export Server_URL="raw.githubusercontent.com/artanodrop/prokontrol/main"
+export Server_Port="443"
+export Server_IP="underfined"
+export Script_Mode="Stable"
+export Auther="FsidVPN"
 clear
 
 cd
 MYIP=$(curl -sS ipv4.icanhazip.com)
-NameUser=$(curl -sS https://raw.githubusercontent.com/artanodrop/permission/main/ipmini | grep $MYIP | awk '{print $2}')
-cekdata=$(curl -sS https://raw.githubusercontent.com/artanodrop/userbackup/main/$NameUser/$NameUser.zip | grep 404 | awk '{print $1}' | cut -d: -f1)
+NameUser=$( curl -s https://${Server_URL}/validated-registered-license-key.txt | grep -w $Your_License_Key | cut -d ' ' -f 9-100 )
+cekdata=$(curl -sS https://raw.githubusercontent.com/artanodrop/backupmultiport/main/$NameUser/$NameUser.zip | grep 404 | awk '{print $1}' | cut -d: -f1)
 
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐${NC}"
 echo -e "$COLOR1│${NC} ${COLBG1}             • RESTOR PANEL MENU •             ${NC} $COLOR1│$NC"
@@ -35,7 +41,7 @@ green "│  [INFO] Data found for username $NameUser"
 echo -e "$COLOR1│${NC}  [ ${green}INFO${NC} ] • Restore Data..."
 read -rp "│  Password File: " -e InputPass
 echo -e "$COLOR1│${NC}  [ ${green}INFO${NC} ] • Downloading data.."
-wget -q -O /root/backup/backup.zip "https://raw.githubusercontent.com/artanodrop/userbackuparta/main/$NameUser/$NameUser.zip" &> /dev/null
+wget -q -O /root/backup/backup.zip "https://raw.githubusercontent.com/artanodrop/backupmultiport/main/$NameUser/$NameUser.zip" &> /dev/null
 echo -e "$COLOR1│${NC}  [ ${green}INFO${NC} ] • Getting your data..."
 unzip -P $InputPass /root/backup/backup.zip &> /dev/null
 echo -e "$COLOR1│${NC}  [ ${green}INFO${NC} ] • Starting to restore data..."
