@@ -211,10 +211,11 @@ echo -e "$COLOR1┌────────────────────�
 echo -e "$COLOR1│ $NC$COLBG1               • VPS SETTING •                 $COLOR1 │$NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
 echo -e " $COLOR1┌───────────────────────────────────────────────┐${NC}"
-echo -e " $COLOR1│$NC   ${COLOR1}[01]${NC} • RUNNING           ${COLOR1}[05]${NC} • TCP TWEAK"
-echo -e " $COLOR1│$NC   ${COLOR1}[02]${NC} • SET BANNER        ${COLOR1}[06]${NC} • RESTART ALL"
-echo -e " $COLOR1│$NC   ${COLOR1}[03]${NC} • BANDWITH USAGE    ${COLOR1}[07]${NC} • AUTO REBOOT"
-echo -e " $COLOR1│$NC   ${COLOR1}[04]${NC} • ANTI TORRENT $sts  ${COLOR1}[08]${NC} • SPEEDTEST"
+echo -e " $COLOR1│$NC   ${COLOR1}[01]${NC} • RUNNING           ${COLOR1}[06]${NC} • TCP TWEAK"
+echo -e " $COLOR1│$NC   ${COLOR1}[02]${NC} • SET BANNER        ${COLOR1}[07]${NC} • RESTART ALL"
+echo -e " $COLOR1│$NC   ${COLOR1}[03]${NC} • BANDWITH USAGE    ${COLOR1}[08]${NC} • AUTO REBOOT"
+echo -e " $COLOR1│$NC   ${COLOR1}[04]${NC} • ANTI TORRENT $sts  ${COLOR1}[09]${NC} • SPEEDTEST"
+echo -e " $COLOR1│$NC   ${COLOR1}[05]${NC} • SET WAKTU REBOOT"
 echo -e " $COLOR1│$NC"
 echo -e " $COLOR1│$NC   $COLOR1[00]$NC • GO BACK"
 echo -e " $COLOR1└───────────────────────────────────────────────┘${NC}"
@@ -229,10 +230,11 @@ case $opt in
 02 | 2) clear ; nano /etc/issue.net ;;
 03 | 3) clear ; mbandwith ;;
 04 | 4) clear ; enabletorrent ;;
-05 | 5) clear ; menu-tcp ;;
-06 | 6) clear ; restart ;;
-07 | 7) clear ; autoboot ;;
-08 | 8) clear ; mspeed ;;
+05 | 5) clear ; jam ;;
+06 | 6) clear ; menu-tcp ;;
+07 | 7) clear ; restart ;;
+08 | 8) clear ; autoboot ;;
+09 | 9) clear ; mspeed ;;
 00 | 0) clear ; menu ;;
 *) clear ; menu-set ;;
 esac
