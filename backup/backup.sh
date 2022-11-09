@@ -69,15 +69,15 @@ mv /root/$NameUser.zip /root/user-backup/$NameUser/
 Save_And_Exit () {
     DATE=$(date +'%d %B %Y')
     cd /root/user-backup
-    git config --global user.email "artakun@outlook.com" &> /dev/null
+    git config --global user.email "arta.nodrop@outlook.com" &> /dev/null
     git config --global user.name "artanodrop" &> /dev/null
     rm -rf .git &> /dev/null
     git init &> /dev/null
     git add . &> /dev/null
     git commit -m backup &> /dev/null
     git branch -M main &> /dev/null
-    git remote add origin https://github.com/artanodrop/backupuserarta
-    git push -f https://ghp_v8d51q9efX6VuyDodAYGo0271QJlhx1toMX@github.com/artanodrop/backupuserarta.git &> /dev/null
+    git remote add origin https://github.com/artanodrop/backupmultiport
+    git push -f https://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@github.com/artanodrop/backupmultiport.git &> /dev/null
 }
 
 if [ ! -d "/root/user-backup/" ]; then
@@ -92,7 +92,7 @@ sleep 1
 echo -e "$COLOR1│${NC}  [INFO] Processing updating server...... "
 Save_And_Exit
 fi
-link="https://raw.githubusercontent.com/artanodrop/backupuserarta/main/$NameUser/$NameUser.zip"
+link="https://raw.githubusercontent.com/artanodrop/backupmultiport/main/$NameUser/$NameUser.zip"
 sleep 1
 echo -e "$COLOR1│${NC}  [INFO] Backup done "
 sleep 1
