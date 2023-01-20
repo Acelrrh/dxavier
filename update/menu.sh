@@ -1,61 +1,4 @@
 #!/bin/bash
-# User Trial SSH / OPENVPN
-# Edition : Stable Edition V1.0
-# Auther  : AWALUDIN FERIYANTO
-# (C) Copyright 2021-2022 By FSIDVPN
-# =========================================
-
-# // Export Color & Information
-export RED='\033[0;31m'
-export GREEN='\033[0;32m'
-export YELLOW='\033[0;33m'
-export BLUE='\033[0;34m'
-export PURPLE='\033[0;35m'
-export CYAN='\033[0;36m'
-export LIGHT='\033[0;37m'
-export NC='\033[0m'
-
-# // Export Banner Status Information
-export EROR="[${RED} EROR ${NC}]"
-export INFO="[${YELLOW} INFO ${NC}]"
-export OKEY="[${GREEN} OKEY ${NC}]"
-export PENDING="[${YELLOW} PENDING ${NC}]"
-export SEND="[${YELLOW} SEND ${NC}]"
-export RECEIVE="[${YELLOW} RECEIVE ${NC}]"
-
-# // Export Align
-export BOLD="\e[1m"
-export WARNING="${RED}\e[5m"
-export UNDERLINE="\e[4m"
-
-# // Exporting URL Host
-export Server_URL="raw.githubusercontent.com/artanodrop/prokontrol/main"
-export Server_Port="443"
-export Server_IP="underfined"
-export Script_Mode="Stable"
-export Auther="FsidVPN"
-
-# // Root Checking
-if [ "${EUID}" -ne 0 ]; then
-		echo -e "${EROR} Please Run This Script As Root User !"
-		exit 1
-fi
-# // Checking Script Expired
-Isadmin=$( curl -s https://${Server_URL}/validated-registered-license-key.txt | grep -w $Your_License_Key | cut -d ' ' -f 8 )
-Nama=$( curl -s https://${Server_URL}/validated-registered-license-key.txt | grep -w $Your_License_Key | cut -d ' ' -f 9-100 )
-exp=$( curl -s https://${Server_URL}/validated-registered-license-key.txt | grep -w $Your_License_Key | cut -d ' ' -f 4 )
-now=`date -d "0 days" +"%Y-%m-%d"`
-expired_date=$(date -d "$exp" +%s)
-now_date=$(date -d "$now" +%s)
-sisa_hari=$(( ($expired_date - $now_date) / 86400 ))
-if [[ $sisa_hari -lt 0 ]]; then
-    echo $sisa_hari > /etc/${Auther}/license-remaining-active-days.db
-    echo -e "${EROR} Your License Key Expired ( $sisa_hari Days )"
-    exit 1
-else
-    echo $sisa_hari > /etc/${Auther}/license-remaining-active-days.db
-fi
-
 dateFromServer=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
 biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
 ###########- COLOR CODE -##############
@@ -158,12 +101,11 @@ sleep 2
 sleep 5
 rm /root/install_up.sh
 rm /opt/.ver
-version_up=$( curl -sS https://raw.githubusercontent.com/artanodrop/update/main/version)
+version_up=$( curl -sS https://raw.githubusercontent.com/artanodrop/update/main/version_up)
 echo "$version_up" > /opt/.ver
 echo -e "$COLOR1│${NC}  $COLOR1[INFO]${NC} Successfully Up To Date!"
-echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
 echo -e "$COLOR1┌────────────────────── BY ───────────────────────┐${NC}"
-echo -e "$COLOR1│${NC}             • ARTA MAULANA PREMI •              $COLOR1│$NC"
+echo -e "$COLOR1│${NC}           ${GREEN}  • ARTA MAULANA PREMI •    $NC          $COLOR1│$NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}" 
 echo ""
 read -n 1 -s -r -p "  Press any key to back on menu"
@@ -179,13 +121,13 @@ upminutes=`uptime -p | awk '{print $4,$5}' | cut -d , -f1`
 uptimecek=`uptime -p | awk '{print $6,$7}' | cut -d , -f1`
 cekup=`uptime -p | grep -ow "day"`
 IPVPS=$(curl -s ipinfo.io/ip )
-serverV=$( curl -sS https://raw.githubusercontent.com/artanodrop/permission/main/version)
+serverV=$( curl -sS https://raw.githubusercontent.com/artanodrop/prokontrol/main/version)
 if [ "$Isadmin" = "Pro" ]; then
 uis="${GREEN}Premium User$NC"
 else
 uis="${RED}Free Version$NC"
 fi
-echo -e "$COLOR1│$NC User Roles     : $uis"
+echo -e "$COLOR1│$NC User Roles     :${GREEN} Premium user$NC"
 if [ "$cekup" = "day" ]; then
 echo -e "$COLOR1│$NC System Uptime  : $uphours $upminutes $uptimecek"
 else
@@ -240,8 +182,8 @@ mai="datediff "$Exp" "$DATE""
 
 echo -e "$COLOR1┌─────────────────────────────────────────────────┐$NC"
 echo -e "$COLOR1│$NC Version     :${COLOR1} $(cat /opt/.ver) Latest Version${NC}"
-echo -e "$COLOR1│$NC Client Name : ${GREEN}$Nama$NC"
-echo -e "$COLOR1│$NC Exp License : ${GREEN}$sisa_hari$NC Days Tersisa $NC"
+echo -e "$COLOR1│$NC Client Name : ${GREEN}KAZEKAGE$NC"
+echo -e "$COLOR1│$NC Exp License : ${GREEN}LIFETIME $NC"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘$NC"
 echo -e "$COLOR1┌────────────────────── BY ───────────────────────┐${NC}"
 echo -e "$COLOR1│${NC}           ${GREEN}  • ARTA MAULANA PREMI •    $NC          $COLOR1│$NC"
